@@ -2,67 +2,131 @@
 <html>
     <head>
         <title>Froggy Slides Create Deck</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="style.css">
+
+        <style>
+            #header {
+                text-align: center;
+            }
+
+            body {
+                background-color: #FBFFE4;
+            }
+
+            .container {
+                display: flex;
+                justify-content: center;
+            }
+
+            .card {
+                border-radius: 15px; 
+                background-color: #3D8D7A;
+                padding: 10px;
+                padding-bottom: 35px;
+                margin: 10px;
+                text-align: center;
+            }
+
+            #deck-form {
+                width: 90%;
+                margin: auto;
+            }
+
+            .add-btn {
+                padding-left: 25px;
+                padding-right: 25px;
+                font-size: 1.2em;
+            }
+
+            .delete-btn {
+                background-color: #FF6B6B;
+                border: none;
+                color: white;
+            }
+
+            .list-group-item {
+                background-color: #B3DBAB;
+                color: #FBFFE4;
+            }
+        </style>
     </head>
     <body>
-
-        <div id="nav">
-            <div id="navBar">
-                <ul>
-                    <li><a href="home.html" class="image-button"><span>Home</span></a></li>
-                    <li><a href="aboutUs.html" class="image-button"><span>About Us</span></a></li>
-                    <li><a href="decks.html" class="image-button"><span>View Deck</span></a></li>
-                </ul>
-
-            </div> <!--#
-            navBar-->      
-        </div> <!--#nav-->
-
-        <h1>Create a Deck</h1>
-    
-        <label for="deckName">Deck Name:</label>
-        <input type="text" id="deckName">
-        
-        <label for="cardName">Card Name:</label>
-        <input type="text" id="cardName">
-        <button onclick="addCard()">Add Card</button>
-    
-        <h3>Cards in Deck:</h3>
-        <ul id="cardList"></ul>
-    
-        <button onclick="saveDeck()">Save Deck</button>
+        <div id="header">
+            <h1>Froggy Slides</h1>
+        </div> <!--#title-->
+        <div id="container mt-5">
+            <div class="card">
+                <h2 card-title mb-4>Create a Deck</h2>
+                <form action="" id="deck-form">
+                    <!-- ENTER DECK NAME HERE -->
+                    <div class="form-group row">
+                        <label for="deck-id" class="col-sm-3 col-form-label text-sm-right">Name of Deck:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="deck-id" name="deck_title" placeholder="Enter deck name here...">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <!-- ENTER WORD HERE -->
+                        <label class="col-sm-3 col-form-label text-sm-right">Word:</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" id="word-input">
+                        </div>
+                        <!-- ENTER DEFINITION HERE -->
+                        <label class="col-sm-2 col-form-label text-sm-right">Definition:</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="definition-input">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12 mt-2">
+                            <button type="button" class="add-btn btn btn-primary" onclick="addWord()">Add</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- ADDED WORDS AND DEFINITIONS APPEARS HERE -->
+                <div class="table-card mt-3">
+                    <h3 class="card-title mb-3">Your Words and Definitions</h3>
+                    <ul id="word-list" class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <strong>Frog: </strong> a tailless amphibian with a short squat body, 
+                            moist smooth skin, and very long hind legs for leaping. 
+                            <button class="delete-btn btn btn-danger btn-sm" onclick="deleteWord(this)">X</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
         <script>
-            let currentDeck = [];
-    
-            function addCard() {
-                let cardInput = document.getElementById("cardName");
-                let cardList = document.getElementById("cardList");
-    
-                if (cardInput.value.trim() !== "") {
-                    currentDeck.push(cardInput.value);
-                    let li = document.createElement("li");
-                    li.textContent = cardInput.value;
-                    cardList.appendChild(li);
-                    cardInput.value = "";
+            function addWord() {
+                let word = document.getElementById("word-input").value.trim(); 
+                let definition = document.getElementById("definition-input").value.trim(); 
+
+                // if inputs are empty 
+                if (word === "" || definition ==="") {
+                    alert("Please enter both a word and a definition."); 
+                    return; 
                 }
+
+                const li = document.createElement("li"); 
+                li.className = "list-group-item d-flex justify-content-between align-items-center"; 
+                li.innerHTML = `<strong>${word + ":"}</strong> ${definition} 
+                                <button class="delete-btn btn btn-danger btn-sm" onclick="deleteWord(this)">X</button>`;
+
+                document.getElementById("word-list").appendChild(li); 
+
+                document.getElementById("word-input").value = ""; 
+                document.getElementById("definition-input").value = ""; 
+
+                return false; 
             }
-    
-            function saveDeck() {
-                let deckName = document.getElementById("deckName").value.trim();
-                if (deckName === "" || currentDeck.length === 0) {
-                    alert("Please enter a deck name and add at least one card.");
-                    return;
-                }
-    
-                let decks = JSON.parse(localStorage.getItem("decks")) || [];
-                decks.push({ name: deckName, cards: currentDeck });
-    
-                localStorage.setItem("decks", JSON.stringify(decks));
-                alert("Deck saved!");
-                window.location.href = "view.html"; // Redirect to View Decks page
+
+            function deleteWord(button) {
+                button.parentElement.remove(); 
             }
         </script>
-    
     </body>
 </html>
