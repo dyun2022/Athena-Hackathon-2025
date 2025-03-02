@@ -1,0 +1,82 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #FBFFE4;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.flashcard-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.flashcard {
+    width: 250px; 
+    height: 150px;
+    background-color: #3D8D7A;
+    color: #FBFFE4;
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+}
+
+.flashcard-word {
+    font-size: 24px;
+    font-weight: bold;
+    color: #FBFFE4;
+}
+
+.flashcard-definition {
+    font-size: 18px;
+    color: #FBFFE4;
+}
+
+.flashcard:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+}
+
+.flipped {
+    background-color: #B3DBAB;
+    color: #FBFFE4;
+}
+
+#navBar li a{
+    padding: 10px;
+    border: 10px;
+    text-decoration: none;
+    color: #3D8D7A;
+}
+
+#navBar ul {
+    list-style: none; 
+    display: flex;
+    justify-content: center;
+}
+
+.image-button {
+    display: inline-block;
+    position: relative;
+    background-image: url('Assets/button.png');
+    background-size: cover;
+    background-position: center;
+    width: 200px; 
+    height: 80px; 
+    text-align: center;
+    text-decoration: none;
+    color: #3D8D7A;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 80px; /* Centers text vertically */
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.image-button:hover {
+    opacity: 0.8; /* Slight fade effect on hover */
+}
