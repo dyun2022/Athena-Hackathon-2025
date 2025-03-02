@@ -1,3 +1,17 @@
+/* fonts */
+@font-face {
+    font-family: mono;
+    src: url(fonts/VCR_OSD_MONO_1.001.ttf);
+}
+@font-face {
+    font-family: rainyHearts;
+    src: url(fonts/rainyhearts.ttf);
+}
+@font-face {
+    font-family: daydream;
+    src: url(fonts/Daydream.ttf);
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #FBFFE4;
@@ -79,4 +93,22 @@ body {
 
 .image-button:hover {
     opacity: 0.8; /* Slight fade effect on hover */
+}
+
+#title {
+    color: #FFF;
+    font-size: 35px;
+    text-align: center;
+    /* text-shadow: 0px 0px 5px #000; */
+    height: 150px;
+    line-height: 60px;
+    margin: 0px;
+    padding: 10px;
+    padding-top: 50px;
+    padding-bottom:20px;
+    /* padding-bottom: 10px; */
+    font-family: daydream;
+    /* font-family: Nasa21; */
+    background-color: #a3d1c5;
+    color: #112b25;
 }

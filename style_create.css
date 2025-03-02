@@ -1,10 +1,24 @@
+/* fonts */
 @font-face {
     font-family: 'marker';
     src: url('fonts/Marker\ Felt.ttf');
 }
+@font-face {
+    font-family: mono;
+    src: url(fonts/VCR_OSD_MONO_1.001.ttf);
+}
+@font-face {
+    font-family: rainyHearts;
+    src: url(fonts/rainyhearts.ttf);
+}
+@font-face {
+    font-family: daydream;
+    src: url(fonts/Daydream.ttf);
+}
 
 #header {
     text-align: center;
+    font-family: daydream; 
 }
 
 body {
@@ -13,6 +27,9 @@ body {
 
 h1 {
     font-family: "marker", sans-serif;
+    font-family: daydream; 
+    padding-top: 50px;
+    padding-bottom: 20px;
     color: #245953;
 }
 
@@ -103,3 +120,4 @@ input {
     font-family: "marker", sans-serif;
     font-size: 1.2em;
 }
+

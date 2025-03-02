@@ -1,0 +1,108 @@
+/* fonts */
+@font-face {
+    font-family: mono;
+    src: url(fonts/VCR_OSD_MONO_1.001.ttf);
+}
+@font-face {
+    font-family: rainyHearts;
+    src: url(fonts/rainyhearts.ttf);
+}
+@font-face {
+    font-family: daydream;
+    src: url(fonts/Daydream.ttf);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #FBFFE4;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+h1 {
+    font-family: "marker", sans-serif;
+    font-family: daydream; 
+    padding-top: 50px;
+    padding-bottom: 20px;
+    color: #245953;
+}
+
+.image-button {
+    display: inline-block;
+    position: relative;
+    background-image: url('Assets/button.png');
+    background-size: cover;
+    background-position: center;
+    width: 200px; 
+    height: 80px; 
+    text-align: center;
+    text-decoration: none;
+    color: #3D8D7A;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 80px; /* Centers text vertically */
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.image-button:hover {
+    opacity: 0.8; /* Slight fade effect on hover */
+}
+
+#navBar li a{
+    padding: 10px;
+    border: 10px;
+    text-decoration: none;
+    color: #3D8D7A;
+}
+
+#navBar ul {
+    list-style: none; 
+    display: flex;
+    justify-content: center;
+}
+
+#frog {
+    margin-right:200px; 
+    margin-top: 50px;
+ }
+
+ #content {
+    display: flex;
+    flex: row;
+    padding:10px;
+    /* margin: 30px; */
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center; /* Center buttons horizontally */
+    gap: 20px; /* Space between buttons */
+    margin-top: 50px;
+    margin-left: 200px;
+}
+
+.text {
+    flex: 1;
+    max-width: 60%; 
+    word-wrap: break-word; /* Ensures text wraps properly */
+    overflow-wrap: break-word;
+}
+
+h4 {
+    font-family: "marker", sans-serif;
+    color: #245953;
+    font-size: 30px;
+    margin-bottom: 5px;
+    max-width: 60%; 
+}
+
+p {
+    font-family: "marker", sans-serif;
+    color: #3D8D7A;
+    font-size: 20px;
+    margin-top: 5px;
+    max-width: 60%; 
+}
