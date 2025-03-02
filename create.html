@@ -4,53 +4,7 @@
         <title>Froggy Slides Create Deck</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="style.css">
-
-        <style>
-            #header {
-                text-align: center;
-            }
-
-            body {
-                background-color: #FBFFE4;
-            }
-
-            .container {
-                display: flex;
-                justify-content: center;
-            }
-
-            .card {
-                border-radius: 15px; 
-                background-color: #3D8D7A;
-                padding: 10px;
-                padding-bottom: 35px;
-                margin: 10px;
-                text-align: center;
-            }
-
-            #deck-form {
-                width: 90%;
-                margin: auto;
-            }
-
-            .add-btn {
-                padding-left: 25px;
-                padding-right: 25px;
-                font-size: 1.2em;
-            }
-
-            .delete-btn {
-                background-color: #FF6B6B;
-                border: none;
-                color: white;
-            }
-
-            .list-group-item {
-                background-color: #B3DBAB;
-                color: #FBFFE4;
-            }
-        </style>
+        <link rel="stylesheet" href="style_create.css">
     </head>
     <body>
         <div id="header">
@@ -80,11 +34,18 @@
                             <input type="text" class="form-control" id="definition-input">
                         </div>
                     </div>
+                    <!-- ADD BUTTON -->
                     <div class="form-group row">
                         <div class="col-sm-12 mt-2">
                             <button type="button" class="add-btn btn btn-primary" onclick="addWord()">Add</button>
                         </div>
                     </div>
+                    <!-- SUBMIT BUTTON THAT LEADS TO DECK PAGE -->
+                     <div class="form-group row">
+                        <div class="col-sm-12 mt-2">
+                            <button type="button" class="btn btn-submit btn-success btn-lg" onclick="submitDeck()">Submit</button>
+                        </div>
+                     </div>
                 </form>
                 <!-- ADDED WORDS AND DEFINITIONS APPEARS HERE -->
                 <div class="table-card mt-3">
@@ -102,6 +63,14 @@
 
         <script>
             function addWord() {
+                let deckName = document.getElementById("deck-id").value.trim(); 
+                if (deckName === "") {
+                    alert("Enter a deck name."); 
+                    return; 
+                }
+
+                localStorage.setItem("deckName", deckName); 
+
                 let word = document.getElementById("word-input").value.trim(); 
                 let definition = document.getElementById("definition-input").value.trim(); 
 
@@ -126,6 +95,23 @@
 
             function deleteWord(button) {
                 button.parentElement.remove(); 
+            }
+
+            function submitDeck() {
+                let words = []; 
+                document.querySelectorAll("#word-list li").forEach((li) => {
+                    let word = li.querySelector("strong").innerText.replace(":", "").trim(); 
+                    let definition = li.innerText.replace("X", "").trim(); 
+                    words.push({word, definition}); 
+                }); 
+
+                if (words.length === 0) {
+                    alert("There are currently no words in the deck"); 
+                    return; 
+                }
+
+                localStorage.setItem("flashcards", JSON.stringify(words)); 
+                window.location.href = "decks.html"; 
             }
         </script>
     </body>
