@@ -5,21 +5,64 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <div id="title">
-            <h1>Froggy Slides</h1>
-        </div> <!--#title-->
+
         <div id="nav">
             <div id="navBar">
                 <ul>
                     <li><a href="home.html">Home</a></li>
-                    <li>
-                        <a href="create.html">Create Deck</a>
-                    </li>
-                    <li><a href="decks.html">View Decks</a></li>
+                    <li><a href="aboutUs.html">About Us</a></li>
+                    <li><a href="decks.html">View Deck</a></li>
                 </ul>
-            </div> <!--#navBar-->
+
+            </div> <!--#
+            navBar-->      
         </div> <!--#nav-->
 
-        </div>
+        <h1>Create a Deck</h1>
+    
+        <label for="deckName">Deck Name:</label>
+        <input type="text" id="deckName">
+        
+        <label for="cardName">Card Name:</label>
+        <input type="text" id="cardName">
+        <button onclick="addCard()">Add Card</button>
+    
+        <h3>Cards in Deck:</h3>
+        <ul id="cardList"></ul>
+    
+        <button onclick="saveDeck()">Save Deck</button>
+
+        <script>
+            let currentDeck = [];
+    
+            function addCard() {
+                let cardInput = document.getElementById("cardName");
+                let cardList = document.getElementById("cardList");
+    
+                if (cardInput.value.trim() !== "") {
+                    currentDeck.push(cardInput.value);
+                    let li = document.createElement("li");
+                    li.textContent = cardInput.value;
+                    cardList.appendChild(li);
+                    cardInput.value = "";
+                }
+            }
+    
+            function saveDeck() {
+                let deckName = document.getElementById("deckName").value.trim();
+                if (deckName === "" || currentDeck.length === 0) {
+                    alert("Please enter a deck name and add at least one card.");
+                    return;
+                }
+    
+                let decks = JSON.parse(localStorage.getItem("decks")) || [];
+                decks.push({ name: deckName, cards: currentDeck });
+    
+                localStorage.setItem("decks", JSON.stringify(decks));
+                alert("Deck saved!");
+                window.location.href = "view.html"; // Redirect to View Decks page
+            }
+        </script>
+    
     </body>
 </html>

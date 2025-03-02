@@ -1,28 +1,59 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Froggy Slides View Decks</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <div id="title">
-            <h1>Froggy Slides</h1>
-        </div> <!--#title-->
-        <div id="nav">
-            <div id="navBar">
-                <ul>
-                    <li><a href="home.html">Home</a></li>
-                    <li>
-                        <a href="create.html">Create Deck</a>
-                    </li>
-                    <li><a href="decks.html">View Decks</a></li>
-                </ul>
-            </div> <!--#navBar-->
-        </div> <!--#nav-->
+<head>
+    <title>Froggy Slides View Decks</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+    <div id="title">
+        <h1>Froggy Slides</h1>
+    </div> 
 
-        <p>testing github</p>
+    <div id="nav">
+        <div id="navBar">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="aboutUs.html">About Us</a></li>
+                <li><a href="create.html">Create Deck</a></li>
+            </ul>
+        </div>    
+    </div> 
 
-        </div>
-    </body>
+    <div id="deckContainer"></div> 
+
+    <script>
+        function loadDecks() {
+            let deckContainer = document.getElementById("deckContainer");
+            let decks = JSON.parse(localStorage.getItem("decks")) || [];
+
+            if (decks.length === 0) {
+                deckContainer.innerHTML = "<p>There are currently no decks!</p>";
+                return;
+            }
+
+            decks.forEach((deck, index) => {
+                let deckDiv = document.createElement("div");
+                deckDiv.innerHTML = `
+                    <svg width="300" height="130">
+                        <rect width="200" height="100" x="10" y="10" rx="20" ry="20" fill="#A3D1C6"/>
+                        <text x="30" y="50" font-size="16" fill="black">${deck.name}</text>
+                    </svg>
+                    <button onclick="deleteDeck(${index})">Delete</button>
+                `;
+                deckContainer.appendChild(deckDiv);
+            });
+        }
+
+        function deleteDeck(index) {
+            let decks = JSON.parse(localStorage.getItem("decks")) || [];
+            decks.splice(index, 1);
+            localStorage.setItem("decks", JSON.stringify(decks));
+            location.reload(); // Refresh the page to update the view
+        }
+
+        window.onload = loadDecks;
+    </script>
+
+</body>
 </html>
