@@ -2,10 +2,11 @@
 <html>
 <head>
     <title>Froggy Slides View Decks</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style_decks.css">
 </head>
 <body>
-
     <div id="title">
         <h1>Froggy Slides</h1>
     </div> 
@@ -20,39 +21,46 @@
         </div>    
     </div> 
 
-    <div id="deckContainer"></div> 
+    <div class="flashcard-container" id="flashcard-container"></div>
 
     <script>
-        function loadDecks() {
-            let deckContainer = document.getElementById("deckContainer");
-            let decks = JSON.parse(localStorage.getItem("decks")) || [];
+        document.addEventListener("DOMContentLoaded", function () {
+            let deckName = localStorage.getItem("deckName"); 
+            let words = JSON.parse(localStorage.getItem("flashcards")) || []; 
+            let container = document.getElementById("flashcard-container"); 
 
-            if (decks.length === 0) {
-                deckContainer.innerHTML = "<p>There are currently no decks!</p>";
-                return;
-            }
+            
 
-            decks.forEach((deck, index) => {
-                let deckDiv = document.createElement("div");
-                deckDiv.innerHTML = `
-                    <svg width="300" height="130">
-                        <rect width="200" height="100" x="10" y="10" rx="20" ry="20" fill="#A3D1C6"/>
-                        <text x="30" y="50" font-size="16" fill="black">${deck.name}</text>
-                    </svg>
-                    <button onclick="deleteDeck(${index})">Delete</button>
-                `;
-                deckContainer.appendChild(deckDiv);
+            words.forEach(({word, definition}) => {
+                let card = document.createElement("div"); 
+                card.className = "flashcard"; 
+
+                let wordSpan = document.createElement("span"); 
+                wordSpan.className = "flashcard-word"; 
+                wordSpan.innerText = word; 
+
+                let defSpan = document.createElement("span"); 
+                defSpan.className = "flashcard-definition"; 
+                defSpan.innerText = definition; 
+                defSpan.style.display = "none"; 
+
+                card.appendChild(wordSpan); 
+                card.appendChild(defSpan); 
+
+                card.addEventListener("click", function() {
+                    if (wordSpan.style.display === "none") {
+                        wordSpan.style.display = "inline"; 
+                        defSpan.style.display = "none"; 
+                    }
+                    else {
+                        wordSpan.style.display = "none"; 
+                        defSpan.style.display = "inline"; 
+                    }
+                }); 
+
+                container.appendChild(card); 
             });
-        }
-
-        function deleteDeck(index) {
-            let decks = JSON.parse(localStorage.getItem("decks")) || [];
-            decks.splice(index, 1);
-            localStorage.setItem("decks", JSON.stringify(decks));
-            location.reload(); // Refresh the page to update the view
-        }
-
-        window.onload = loadDecks;
+        });
     </script>
 
 </body>
