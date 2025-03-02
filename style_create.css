@@ -1,0 +1,66 @@
+@font-face {
+    font-family: 'marker';
+    src: url('fonts/Marker\ Felt.ttf');
+}
+
+#header {
+    text-align: center;
+}
+
+body {
+    background-color: #FBFFE4;
+}
+
+h2 {
+    font-family: "marker", sans-serif;
+}
+
+h3 {
+    font-family: "marker", sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    border-radius: 15px; 
+    background-color: #3D8D7A;
+    padding: 10px;
+    padding-bottom: 35px;
+    margin: 10px;
+    text-align: center;
+}
+
+#deck-form {
+    width: 90%;
+    margin: auto;
+}
+
+.add-btn {
+    padding-left: 25px;
+    padding-right: 25px;
+    font-size: 1.2em;
+}
+
+.delete-btn {
+    background-color: #FF6B6B;
+    border: none;
+    color: white;
+}
+
+.list-group-item {
+    background-color: #9bc992;
+    color: #FBFFE4;
+}
+
+label {
+    font-family: "marker", sans-serif;
+    font-size: 2.0em;
+}
+
+input {
+    font-family: "marker", sans-serif;
+    font-size: 1.2em;
+}
