@@ -122,39 +122,45 @@ body{
     background-color: #7AADCD;
 }
 
+/* Center the container */
 .button-container {
     display: flex;
     flex-direction: column; /* Stack buttons vertically */
-    align-items: center; /* Center buttons horizontally */
+    align-items: center; /* Center them horizontally */
     gap: 20px; /* Space between buttons */
     margin-top: 50px;
-    margin-left: 200px;
+    margin-left: 100px;
 }
 
-/* Pixelated Button Styling */
-.pixel-button {
-    background-color: #B3DBAB;
-    color: #112b25;
-    font-size: 30px;
-    font-family: rainyHearts; /* Pixel-style font */
-    padding: 20px 40px;
-    border: 4px solid #3D8D7A;
-    display: block;
-    width: 200px;
-    text-align: center;
+/* Image Button Styling */
+.image-button {
+    position: relative; /* Allows text to be placed on top */
+    display: inline-block;
+    width: 300px; /* Increase button size */
+    height: 100px; /* Adjust height for larger buttons */
     cursor: pointer;
-    
-    /* Pixelated Effect */
-    image-rendering: pixelated;
-    box-shadow: 4px 4px 0px #000, 8px 8px 0px #444; /* 3D pixel shadow */
-    
-    /* Remove default button styling */
-    border-radius: 0;
-    text-transform: uppercase;
 }
 
-/* Hover Effect */
-.pixel-button:hover {
-    background-color: #444;
-    box-shadow: 4px 4px 0px #000, 6px 6px 0px #222;
+/* Button Image */
+.image-button img {
+    width: 100%; /* Make image take full button width */
+    height: 100%; /* Ensure it maintains proportions */
+    display: block;
 }
+
+/* Centered Button Text */
+.button-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Perfectly centers text */
+    font-family: rainyHearts; /* Retro pixel font */
+    font-size: 30px; /* Adjust text size */
+    color: #112b25;
+    text-align: center;
+    /* background: rgba(0, 0, 0, 0.5); Background for contrast */
+    padding: 5px 10px;
+    width: 80%; /* Keeps text inside the button */
+}
+
+
