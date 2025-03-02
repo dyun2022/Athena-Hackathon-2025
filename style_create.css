@@ -34,13 +34,15 @@ h1 {
 }
 
 h2 {
-    font-family: "marker", sans-serif;
+    font-family: rainyHearts, sans-serif;
     color: #FBFFE4;
+    font-size: 35px;
 }
 
 h3 {
-    font-family: "marker", sans-serif;
+    font-family: rainyHearts, sans-serif;
     color: #FBFFE4;
+    font-size: 25px;
 }
 
 .container {
@@ -69,7 +71,7 @@ h3 {
     font-size: 1.2em;
     background-color: #82b5a9;
     border: 3px solid #245953;
-    font-family: "marker", sans-serif;
+    font-family: rainyHearts, sans-serif;
     color: #FBFFE4;
     letter-spacing: 3px; 
 }
@@ -87,7 +89,7 @@ h3 {
     font-size: 1.2em;
     background-color: #82b5a9;
     border: 3px solid #245953;
-    font-family: "marker", sans-serif;
+    font-family: rainyHearts, sans-serif;
     color: #FBFFE4;
     letter-spacing: 3px;
 }
@@ -112,12 +114,25 @@ h3 {
 }
 
 label {
-    font-family: "marker", sans-serif;
+    font-family: rainyHearts, sans-serif;
     color: #FBFFE4;
+    font-size: 20px;
 }
 
 input {
-    font-family: "marker", sans-serif;
-    font-size: 1.2em;
+    font-family: rainyHearts, sans-serif;
+    font-size: 5em;
 }
-
+.titleButton {
+    color: #112b25;
+    text-decoration: none;
+}
+.titleButton:hover {
+    text-decoration: none;
+}
+/* .form-control {
+    font-size: 30px;
+} */
+#nameFont {
+    font-size: 100px;
+}

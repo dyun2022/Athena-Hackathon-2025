@@ -13,7 +13,7 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: rainyHearts, sans-serif;
     background-color: #FBFFE4;
     margin: 0;
     padding: 0;
@@ -32,7 +32,7 @@ body {
     height: 150px;
     background-color: #3D8D7A;
     color: #FBFFE4;
-    font-size: 1.5em;
+    font-size: 2em;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -40,13 +40,13 @@ body {
 }
 
 .flashcard-word {
-    font-size: 24px;
+    font-size: 40px;
     font-weight: bold;
     color: #FBFFE4;
 }
 
 .flashcard-definition {
-    font-size: 18px;
+    font-size: 30px;
     color: #FBFFE4;
 }
 
@@ -64,7 +64,7 @@ body {
     padding: 10px;
     border: 10px;
     text-decoration: none;
-    color: #3D8D7A;
+    color: #112b25;
 }
 
 #navBar ul {
@@ -76,17 +76,17 @@ body {
 .image-button {
     display: inline-block;
     position: relative;
-    background-image: url('Assets/button.png');
+    background-image: url('images/button.png');
     background-size: cover;
     background-position: center;
     width: 200px; 
     height: 80px; 
     text-align: center;
     text-decoration: none;
-    color: #3D8D7A;
-    font-size: 20px;
+    color: #112b25;
+    font-size: 30px;
     font-weight: bold;
-    line-height: 80px; /* Centers text vertically */
+    line-height: 60px; /* Centers text vertically */
     border-radius: 10px;
     transition: 0.3s;
 }
@@ -109,6 +109,14 @@ body {
     /* padding-bottom: 10px; */
     font-family: daydream;
     /* font-family: Nasa21; */
-    background-color: #a3d1c5;
+    /* background-color: #a3d1c5; */
+    color: #112b25;
+}
+.titleButton {
+    color: #112b25;
+    text-decoration: none;
+}
+.titleButton:hover {
+    text-decoration: none;
     color: #112b25;
 }
